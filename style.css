@@ -51,7 +51,6 @@ table{
     width: 15px; 
     height: 15px;
     cursor: pointer;
-    background-color: #fe21a2;
 }
 .name{
     text-align: center;
@@ -60,9 +59,71 @@ table{
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 50px;
-    transition: max-width 1.5s ease-in-out;
+    /* transition: max-width 1.5s ease-in-out; */
 }
 .filter-bar{
     height: 20px;
     padding-top: 20px;
+}
+.details{
+    position: absolute;
+    z-index: 1;
+    height: 750px;
+    width: 350px;
+    left: 15px;
+    right: 500px;
+    top: 30px;
+    border-radius: 9px;
+    background-color: #363062;
+    border: 4px solid #0C134F;
+    padding-left: 6px;
+    display: none;
+}
+.row1{
+    height: 30px;
+    /* background-color: #194000; */
+}
+.cross{
+    margin: 3px 310px;
+    background-color: transparent;
+    border: 1px solid white;
+    font-size: 15px;
+    cursor: pointer;
+}
+.row2{
+    height: 150px;
+    align-items: center;
+}
+.inner-row2{
+    height: 135px;
+    width: 135px;
+    margin: 20px 110px;
+    border: 1px solid white;
+    color: whitesmoke;
+    background-color: #194000;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 5px 5px black;
+}
+#Z{
+    font-size: 30px;
+    text-align: left;
+    
+}
+#sym{
+    font-size: 40px;
+    text-align: center;
+    font-weight: bold;
+}
+#Z_name{
+    font-size: 25px;
+    text-align: center;
+}
+.details-table td{
+    text-align: left;
+    font-weight: bold;
+}
+.row4{
+    padding-left: 5px;
+    font-style: italic;
 }
