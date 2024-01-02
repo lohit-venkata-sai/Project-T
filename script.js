@@ -281,14 +281,16 @@ var elements = [
       document.getElementById('Named-By').textContent = element.namedBy;
       document.getElementById('Atomic-Mass').textContent = element.atomicMass;
       document.getElementById('Density').textContent = element.density;
-      document.getElementById('element-description').textContent = `${element.name} is an element with atomic number ${element.atomicNumber} and symbol ${element.symbol}.`;
+      //document.getElementById('element-description').textContent = `${element.name} is an element with atomic number ${element.atomicNumber} and symbol ${element.symbol}.`;
     }
     var container = document.querySelector('.details.container');
     for (var i = 0; i < elements.length; i++) {
-      var elementDiv = createElementDiv(elements[i]);
-      container.appendChild(elementDiv);
+     // var elementDiv = createElementDiv(elements[i]);
+     var elementDiv=document.getElementsByClassName ("q")[i];
+      //container.appendChild(elementDiv);
       elementDiv.addEventListener('click', function (event) {
-        var selectedElement = elements.find(el => el.symbol === event.target.textContent.split(' ')[0]);
+       // var selectedElement=container.getElementsByClassName ("row2")[0];
+       var selectedElement = elements.find(el => el.symbol === event.target.textContent);
         showElementDetails(selectedElement);
         document.querySelector('.details.container').style.display = 'block';
       });
@@ -297,4 +299,7 @@ var elements = [
       document.querySelector('.details.container').style.display = 'none';
     });
     
+
+
+
 
