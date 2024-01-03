@@ -65,7 +65,7 @@ table{
     height: 20px;
     padding-top: 20px;
 }
-.details{
+.details-container{
     position: absolute;
     z-index: 1;
     height: 750px;

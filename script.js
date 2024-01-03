@@ -1,158 +1,3 @@
-const Ele = {
-    1: ['H', 'Hydrogen'],
-    2: ['He', 'Helium'],
-    3: ['Li', 'Lithium'],
-    4: ['Be', 'Beryllium'],
-    5: ['B', 'Boron'],
-    6: ['C', 'Carbon'],
-    7: ['N', 'Nitrogen'],
-    8: ['O', 'Oxygen'],
-    9: ['F', 'Fluorine'],
-    10: ['Ne', 'Neon'],
-    11: ['Na', 'Sodium'],
-    12: ['Mg', 'Magnesium'],
-    13: ['Al', 'Aluminum'],
-    14: ['Si', 'Silicon'],
-    15: ['P', 'Phosphorus'],
-    16: ['S', 'Sulfur'],
-    17: ['Cl', 'Chlorine'],
-    18: ['Ar', 'Argon'],
-    19: ['K', 'Potassium'],
-    20: ['Ca', 'Calcium'],
-    21: ['Sc', 'Scandium'],
-    22: ['Ti', 'Titanium'],
-    23: ['V', 'Vanadium'],
-    24: ['Cr', 'Chromium'],
-    25: ['Mn', 'Manganese'],
-    26: ['Fe', 'Iron'],
-    27: ['Ni', 'Nickel'],
-    28: ['Co', 'Cobalt'],
-    29: ['Cu', 'Copper'],
-    30: ['Zn', 'Zinc'],
-    31: ['Ga', 'Gallium'],
-    32: ['Ge', 'Germanium'],
-    33: ['As', 'Arsenic'],
-    34: ['Se', 'Selenium'],
-    35: ['Br', 'Bromine'],
-    36: ['Kr', 'Krypton'],
-    37: ['Rb', 'Rubidium'],
-    38: ['Sr', 'Strontium'],
-    39: ['Y', 'Yttrium'],
-    40: ['Zr', 'Zirconium'],
-    41: ['Nb', 'Niobium'],
-    42: ['Mo', 'Molybdenum'],
-    43: ['Tc', 'Technetium'],
-    44: ['Ru', 'Ruthenium'],
-    45: ['Rh', 'Rhodium'],
-    46: ['Pd', 'Palladium'],
-    47: ['Ag', 'Silver'],
-    48: ['Cd', 'Cadmium'],
-    49: ['In', 'Indium'],
-    50: ['Sn', 'Tin'],
-    51: ['Sb', 'Antimony'],
-    52: ['Te', 'Tellurium'],
-    53: ['I', 'Iodine'],
-    54: ['Xe', 'Xenon'],
-    55: ['Cs', 'Cesium'],
-    56: ['Ba', 'Barium'],
-    57: ['La', 'Lanthanum'],
-    58: ['Ce', 'Cerium'],
-    59: ['Pr', 'Praseodymium'],
-    60: ['Nd', 'Neodymium'],
-    61: ['Pm', 'Promethium'],
-    62: ['Sm', 'Samarium'],
-    63: ['Eu', 'Europium'],
-    64: ['Gd', 'Gadolinium'],
-    65: ['Tb', 'Terbium'],
-    66: ['Dy', 'Dysprosium'],
-    67: ['Ho', 'Holmium'],
-    68: ['Er', 'Erbium'],
-    69: ['Tm', 'Thulium'],
-    70: ['Yb', 'Ytterbium'],
-    71: ['Lu', 'Lutetium'],
-    72: ['Hf', 'Hafnium'],
-    73: ['Ta', 'Tantalum'],
-    74: ['W', 'Tungsten'],
-    75: ['Re', 'Rhenium'],
-    76: ['Os', 'Osmium'],
-    77: ['Ir', 'Iridium'],
-    78: ['Pt', 'Platinum'],
-    79: ['Au', 'Gold'],
-    80: ['Hg', 'Mercury'],
-    81: ['Tl', 'Thallium'],
-    82: ['Pb', 'Lead'],
-    83: ['Bi', 'Bismuth'],
-    84: ['Po', 'Polonium'],
-    85: ['At', 'Astatine'],
-    86: ['Rn', 'Radon'],
-    87: ['Fr', 'Francium'],
-    88: ['Ra', 'Radium'],
-    89: ['Ac', 'Actinium'],
-    90: ['Th', 'Thorium'],
-    91: ['Pa', 'Protactinium'],
-    92: ['U', 'Uranium'],
-    93: ['Np', 'Neptunium'],
-    94: ['Pu', 'Plutonium'],
-    95: ['Am', 'Americium'],
-    96: ['Cm', 'Curium'],
-    97: ['Bk', 'Berkelium'],
-    98: ['Cf', 'Californium'],
-    99: ['Es', 'Einsteinium'],
-    100: ['Fm', 'Fermium'],
-    101: ['Md', 'Mendelevium'],
-    102: ['No', 'Nobelium'],
-    103: ['Lr', 'Lawrencium'],
-    104: ['Rf', 'Rutherfordium'],
-    105: ['Db', 'Dubnium'],
-    106: ['Sg', 'Seaborgium'],
-    107: ['Bh', 'Bohrium'],
-    108: ['Hs', 'Hassium'],
-    109: ['Mt', 'Meitnerium'],
-    110: ['Ds', 'Darmstadtium'],
-    111: ['Rg', 'Roentgenium'],
-    112: ['Cn', 'Copernicium'],
-    113: ['Nh', 'Nihonium'],
-    114: ['Fl', 'Flerovium'],
-    115: ['Mc', 'Moscovium'],
-    116: ['Lv', 'Livermorium'],
-    117: ['Ts', 'Tennessine'],
-    118: ['Og', 'Oganesson'],
-  };
-
-// console.log(Ele[1]); =>Array
-// console.log(Ele[1][0]) =>Symbol
-// console.log(Ele[1][1]); =>name
-
-for(let i=1; i<=118; i++)
-{   
-    i = String(i);
-    var element_no= document.querySelector('.atomic_no[id = "'+i+'"]');
-    var element_name= document.querySelector('.name[id ="'+i+'"]');
-    var element_symbol= document.querySelector('.Symbol[id = "'+i+'"]');
-    element_no.textContent = String(i);
-    element_name.textContent= Ele[i][1];
-    element_symbol.textContent= Ele[i][0];
-    i = Number(i);
-}
-
-document.addEventListener('DOMContentLoaded',function(){
-  var col_q = document.getElementsByClassName('q');
-  var col_name = document.getElementsByClassName('name');
-
-  for (let i = 0; i < col_q.length; i++) {
-    col_q[i].addEventListener('mouseover', function () {
-        this.style.transform = 'scale(1.2)';
-        this.style.transformOrigin = 'center center';
-        // this.style.position = ;
-        //col_name[i].style.maxWidth = 'none';
-    });
-
-    col_q[i].addEventListener('mouseleave', function () {
-        this.style.transform = 'scale(1)';
-        //col_name[i].style.maxWidth = '55px';
-    });
-  }
-})
 var elements = [
   { symbol: 'H', name: 'Hydrogen', atomicNumber: 1, discoveredBy: 'Henry Cavendish', namedBy: 'Antoine Lavoisier', atomicMass: '1.008', density: '0.0000899' },
   { symbol: 'He', name: 'Helium', atomicNumber: 2, discoveredBy: 'Pierre Janssen', namedBy: 'Léon Teisserenc de Bort', atomicMass: '4.0026', density: '0.0001786' },
@@ -171,8 +16,8 @@ var elements = [
   { symbol: 'P', name: 'Phosphorus', atomicNumber: 15, discoveredBy: 'Hennig Brand', namedBy: 'Antoine Lavoisier', atomicMass: '30.974', density: '1.82' },
   { symbol: 'S', name: 'Sulfur', atomicNumber: 16, discoveredBy: 'Ancient China', namedBy: 'Antoine Lavoisier', atomicMass: '32.06', density: '2.067' },
   { symbol: 'Cl', name: 'Chlorine', atomicNumber: 17, discoveredBy: 'Carl Wilhelm Scheele', namedBy: 'Humphry Davy', atomicMass: '35.45', density: '0.003214' },
-  { symbol: 'K', name: 'Potassium', atomicNumber: 19, discoveredBy: 'Humphry Davy', namedBy: 'Humphry Davy', atomicMass: '39.098', density: '0.89' },
   { symbol: 'Ar', name: 'Argon', atomicNumber: 18, discoveredBy: 'Lord Rayleigh and Sir William Ramsay', namedBy: 'Lord Rayleigh and Sir William Ramsay', atomicMass: '39.948', density: '0.0017837' },
+  { symbol: 'K', name: 'Potassium', atomicNumber: 19, discoveredBy: 'Humphry Davy', namedBy: 'Humphry Davy', atomicMass: '39.098', density: '0.89' },
   { symbol: 'Ca', name: 'Calcium', atomicNumber: 20, discoveredBy: 'Humphry Davy', namedBy: 'Humphry Davy', atomicMass: '40.078', density: '1.55' },
   { symbol: 'Sc', name: 'Scandium', atomicNumber: 21, discoveredBy: 'Lars Fredrik Nilson', namedBy: 'Nilson', atomicMass: '44.956', density: '2.98' },
   { symbol: 'Ti', name: 'Titanium', atomicNumber: 22, discoveredBy: 'William Gregor', namedBy: 'Martin Heinrich Klaproth', atomicMass: '47.867', density: '4.506' },
@@ -180,6 +25,7 @@ var elements = [
   { symbol: 'Cr', name: 'Chromium', atomicNumber: 24, discoveredBy: 'Louis Nicolas Vauquelin', namedBy: 'Louis Nicolas Vauquelin', atomicMass: '51.996', density: '7.15' },
   { symbol: 'Mn', name: 'Manganese', atomicNumber: 25, discoveredBy: 'Carl Wilhelm Scheele', namedBy: 'Gahn and Scheele', atomicMass: '54.938', density: '7.3' },
   { symbol: 'Fe', name: 'Iron', atomicNumber: 26, discoveredBy: 'Ancient Egypt', namedBy: 'Ancient Egypt', atomicMass: '55.845', density: '7.874' },
+  { symbol: 'Co', name: 'Cobalt', atomicNumber: 27, discoveredBy: 'Georg Brandt', namedBy: 'Georg Brandt', atomicMass: '58.93', density: '8.90' },
   { symbol: 'Ni', name: 'Nickel', atomicNumber: 28, discoveredBy: 'Axel Fredrik Cronstedt', namedBy: 'Axel Fredrik Cronstedt', atomicMass: '58.693', density: '8.908' },
   { symbol: 'Cu', name: 'Copper', atomicNumber: 29, discoveredBy: 'Ancient Egypt', namedBy: 'Ancient Egypt', atomicMass: '63.546', density: '8.96' },
   { symbol: 'Zn', name: 'Zinc', atomicNumber: 30, discoveredBy: 'India', namedBy: 'India', atomicMass: '65.38', density: '7.14' },
@@ -234,9 +80,15 @@ var elements = [
   { symbol: 'Au', name: 'Gold', atomicNumber: 79, discoveredBy: 'Ancient Egypt', namedBy: 'Ancient Egypt', atomicMass: '196.97', density: '19.32' },
   { symbol: 'Hg', name: 'Mercury', atomicNumber: 80, discoveredBy: 'Ancient China', namedBy: 'Ancient China', atomicMass: '200.59', density: '13.55' },
   { symbol: 'Tl', name: 'Thallium', atomicNumber: 81, discoveredBy: 'William Crookes', namedBy: 'William Crookes', atomicMass: '204.38', density: '11.85' },
-  { symbol: 'Pb', name: 'Lead', atomicNumber: 82, discoveredBy: 'Ancient Egypt', namedBy: 'Ancient Egypt', atomicMass: '207.2', density: '11.34' },
-  { symbol: 'Bi', name: 'Bismuth', atomicNumber: 83, discoveredBy: 'Claude François Geoffroy', namedBy: 'Claude François Geoffroy', atomicMass: '208.98', density: '9.78' },
-  { symbol: 'Th', name: 'Thorium', atomicNumber: 90, discoveredBy: 'Jöns Jakob Berzelius', namedBy: 'Jöns Jakob Berzelius', atomicMass: '232.04', density: '11.72' },
+    { symbol: 'Pb', name: 'Lead', atomicNumber: 82, discoveredBy: 'Ancient Egypt', namedBy: 'Ancient Egypt', atomicMass: '207.2', density: '11.34' },
+    { symbol: 'Bi', name: 'Bismuth', atomicNumber: 83, discoveredBy: 'Claude François Geoffroy', namedBy: 'Claude François Geoffroy', atomicMass: '208.98', density: '9.78' },
+    { symbol: 'Po', name: 'Polonium', atomicNumber: 84, discoveredBy: 'Pierre Curie and Marie Curie', namedBy: 'IUPAC', atomicMass: '(209)', density: '9.20' },
+    { symbol: 'At', name: 'Astatine', atomicNumber: 85, discoveredBy: 'Dale R. Corson, Kenneth Ross MacKenzie, and Emilio Segrè', namedBy: 'IUPAC', atomicMass: '(210)', density: 'unknown' },
+    { symbol: 'Rn', name: 'Radon', atomicNumber: 86, discoveredBy: 'Friedrich Ernst Dorn', namedBy: 'IUPAC', atomicMass: '(222)', density: '9.73' },
+    { symbol: 'Fr', name: 'Francium', atomicNumber: 87, discoveredBy: 'Marguerite Perey', namedBy: 'IUPAC', atomicMass: '(223)', density: 'unknown' },
+    { symbol: 'Ra', name: 'Radium', atomicNumber: 88, discoveredBy: 'Pierre Curie and Marie Curie', namedBy: 'Pierre Curie and Marie Curie', atomicMass: '(226)', density: '5.50' },
+    { symbol: 'Ac', name: 'Actinium', atomicNumber: 89, discoveredBy: 'Friedrich Oskar Giesel', namedBy: 'Friedrich Oskar Giesel', atomicMass: '(227)', density: '10.07' },
+    { symbol: 'Th', name: 'Thorium', atomicNumber: 90, discoveredBy: 'Jöns Jakob Berzelius', namedBy: 'Jöns Jakob Berzelius', atomicMass: '232.04', density: '11.72' },
   { symbol: 'Pa', name: 'Protactinium', atomicNumber: 91, discoveredBy: 'William Crookes', namedBy: 'IUPAC', atomicMass: '231.04', density: '15.37' },
   { symbol: 'U', name: 'Uranium', atomicNumber: 92, discoveredBy: 'Martin Heinrich Klaproth', namedBy: 'Martin Heinrich Klaproth', atomicMass: '238.03', density: '19.05' },
   { symbol: 'Np', name: 'Neptunium', atomicNumber: 93, discoveredBy: 'Edwin McMillan and Philip H. Abelson', namedBy: 'IUPAC', atomicMass: '(237)', density: '20.45' },
@@ -265,6 +117,40 @@ var elements = [
     { symbol: 'Lv', name: 'Livermorium', atomicNumber: 116, discoveredBy: 'Joint Institute for Nuclear Research (JINR) in Russia and Lawrence Livermore National Laboratory (LLNL) in the USA', namedBy: 'IUPAC', atomicMass: '(293)', density: 'None' },
     { symbol: 'Ts', name: 'Tennessine', atomicNumber: 117, discoveredBy: 'Joint Institute for Nuclear Research (JINR) in Russia and Oak Ridge National Laboratory (ORNL) in the USA', namedBy: 'IUPAC', atomicMass: '(294)', density: 'None' },
     { symbol: 'Og', name: 'Oganesson', atomicNumber: 118, discoveredBy: 'Joint Institute for Nuclear Research (JINR) in Russia and Lawrence Livermore National Laboratory (LLNL) in the USA', namedBy: 'IUPAC', atomicMass: '(294)', density: 'None' }];
+
+
+for(let i=0; i<118; i++)
+{   
+    // i = String(i);
+    var element_no= document.querySelector('.atomic_no[id = "'+(i+1)+'"]');
+    var element_name= document.querySelector('.name[id ="'+(i+1)+'"]');
+    var element_symbol= document.querySelector('.Symbol[id = "'+(i+1)+'"]');
+    element_no.textContent = elements[i].atomicNumber;
+    element_name.textContent= elements[i].name;
+    element_symbol.textContent= elements[i].symbol;
+    // i = Number(i);
+}
+
+document.addEventListener('DOMContentLoaded',function(){
+  var col_q = document.getElementsByClassName('q');
+  // var col_name = document.getElementsByClassName('name');
+
+  for (let i = 0; i < col_q.length; i++) {
+    col_q[i].addEventListener('mouseover', function () {
+        this.style.transform = 'scale(1.2)';
+        this.style.transformOrigin = 'center center';
+        // this.style.position = ;
+        //col_name[i].style.maxWidth = 'none';
+    });
+
+    col_q[i].addEventListener('mouseleave', function () {
+        this.style.transform = 'scale(1)';
+        //col_name[i].style.maxWidth = '55px';
+    });
+  }
+})
+
+    
     function createElementDiv(element) {
       var div = document.createElement('div');
       div.className = 'element';
@@ -273,6 +159,7 @@ var elements = [
     }
     
     function showElementDetails(element) {
+      if(element){
       document.getElementById('Z').textContent = element.atomicNumber;
       document.getElementById('sym').textContent = element.symbol;
       document.getElementById('Z_name').textContent = element.name;
@@ -281,22 +168,25 @@ var elements = [
       document.getElementById('Named-By').textContent = element.namedBy;
       document.getElementById('Atomic-Mass').textContent = element.atomicMass;
       document.getElementById('Density').textContent = element.density;
-      //document.getElementById('element-description').textContent = `${element.name} is an element with atomic number ${element.atomicNumber} and symbol ${element.symbol}.`;
+      document.getElementById('element-description').textContent = `${element.name} is an element with atomic number ${element.atomicNumber} and symbol ${element.symbol}.`;
+      }
     }
-    var container = document.querySelector('.details.container');
+
+    var container = document.querySelector('.details-container');
     for (var i = 0; i < elements.length; i++) {
      // var elementDiv = createElementDiv(elements[i]);
      var elementDiv=document.getElementsByClassName ("q")[i];
       //container.appendChild(elementDiv);
       elementDiv.addEventListener('click', function (event) {
        // var selectedElement=container.getElementsByClassName ("row2")[0];
+       console.log(elements.find(el => el.symbol === event.target.textContent));
        var selectedElement = elements.find(el => el.symbol === event.target.textContent);
         showElementDetails(selectedElement);
-        document.querySelector('.details.container').style.display = 'block';
+        document.querySelector('.details-container').style.display = 'block';
       });
     }
     document.querySelector('.cross').addEventListener('click', function () {
-      document.querySelector('.details.container').style.display = 'none';
+      document.querySelector('.details-container').style.display = 'none';
     });
     
 
