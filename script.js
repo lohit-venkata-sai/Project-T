@@ -120,7 +120,6 @@ var elements = [
 
 
 
-
 function arrange(){
   for(let i=0; i<118; i++)
   {   
@@ -131,6 +130,7 @@ function arrange(){
       element_name.textContent= elements[i].name;
       element_symbol.textContent= elements[i].symbol;
   }
+  hoverTds();
 };
 
 window.onload = arrange();
@@ -153,7 +153,6 @@ function hoverTds(){
     });
   }
 }
-hoverTds();
 
 function showElementDetails(element) {
     if(element){
@@ -168,38 +167,199 @@ function showElementDetails(element) {
       document.getElementById('element-description').textContent = `${element.name} is an element with atomic number ${element.atomicNumber} and symbol ${element.symbol}.`;
       }
 }
-
-
+ 
 function onClickEvent() {
   var container = document.querySelector('.details-container');
-  
+
   for (var i = 0; i < elements.length; i++) {
     var elementDiv = document.getElementsByClassName("q")[i];
-    
+
     elementDiv.addEventListener('click', function (event) {
       var selectedElement = null;
       const items = ['atomicNumber', 'symbol', 'name'];
-      
+
       for (let i = 0; i < items.length; i++) {
         selectedElement = elements.find(el => el[items[i]] === event.target.textContent);
-        
         if (selectedElement) {
-          break;
+          break; // Exit the loop if an element is found
         }
       }
-      
+
       if (selectedElement) {
         showElementDetails(selectedElement);
         container.style.display = 'block';
       } else {
-        console.log("Element not found");
+        console.log("Element not found"); // Handle the case where no element is found
       }
     });
   }
-  
+
   document.querySelector('.cross').addEventListener('click', function () {
     container.style.display = 'none';
   });
 }
-
 onClickEvent();
+
+
+
+//  document.getElementsByClassName('q')[22].style.visibility = 'hidden';
+
+
+// const Alkali_metals = ['3', '11', '19', '37', '55', '87'];
+// var alkali = document.getElementById('Alkaline-metals');
+
+// alkali.addEventListener('change', function () {
+//   for (let i = 0; i < Alkali_metals.length; i++) {
+//     // Check if the checkbox is unchecked
+//     if (!alkali.checked) {
+//       // Hide the element with id i
+//       document.getElementById(Alkali_metals[i].toString()).style.visibility = "hidden";
+//     } else {
+//       // If the checkbox is checked, show the element with id i
+//       document.getElementById(Alkali_metals[i].toString()).style.visibility = "visible";
+//     }
+//   }
+// });
+
+const Alkali_metals = [3, 11, 19, 37, 55, 87];
+    var alkali = document.getElementById('Alkaline-metals');
+
+    alkali.addEventListener('change', function () {
+      for (let i = 0; i < Alkali_metals.length; i++) {
+        // Find the parent td by ID and check if the checkbox is unchecked
+        var childTd = document.querySelector('.q [id="' + Alkali_metals[i] + '"]');
+        var parentTd = childTd.parentNode;
+        if (parentTd && !alkali.checked) {
+          // Hide the parent td
+          parentTd.style.visibility = "hidden";
+        } else if (parentTd) {
+          // If the checkbox is checked, show the parent td
+          parentTd.style.visibility = "visible";
+        }
+      }
+    });
+  const Alkali_Earths = [4, 12, 20, 38, 56, 88];
+    var earths = document.getElementById('Alkaline-earth-metals');
+
+  earths.addEventListener('change', function () {
+      for (let i = 0; i < Alkali_Earths.length; i++) {
+        // Find the parent td by ID and check if the checkbox is unchecked
+        var childTd = document.querySelector('.q [id="' + Alkali_Earths[i] + '"]');
+        var parentTd = childTd.parentNode;
+        if (parentTd && !earths.checked) {
+          // Hide the parent td
+          parentTd.style.visibility = "hidden";
+        } else if (parentTd) {
+          // If the checkbox is checked, show the parent td
+          parentTd.style.visibility = "visible";
+        }
+      }
+    });
+ 
+  const Metalloids = [5,14,32,33,51,52,84];
+       var Metalloid = document.getElementById('Metalloids');
+       Metalloid.addEventListener('change', function () {
+        for (let i = 0; i < Metalloids.length; i++) {
+          // Find the parent td by ID and check if the checkbox is unchecked
+          var childTd = document.querySelector('.q [id="' + Metalloids[i] + '"]');
+          var parentTd = childTd.parentNode;
+          if (parentTd && !Metalloid.checked) {
+            // Hide the parent td
+            parentTd.style.visibility = "hidden";
+          } else if (parentTd) {
+            // If the checkbox is checked, show the parent td
+            parentTd.style.visibility = "visible";
+          }
+        }
+      });
+      const Non_metals = [1, 2, 6, 7, 8, 9, 10, 15, 16, 17, 18, 34, 35, 36, 53, 54, 86];
+      var Non_metal = document.getElementById('Non-metals');
+      Non_metal.addEventListener('change', function () {
+       for (let i = 0; i < Non_metals.length; i++) {
+         // Find the parent td by ID and check if the checkbox is unchecked
+         var childTd = document.querySelector('.q [id="' + Non_metals[i] + '"]');
+         var parentTd = childTd.parentNode;
+         if (parentTd && !Non_metal.checked) {
+           // Hide the parent td
+           parentTd.style.visibility = "hidden";
+         } else if (parentTd) {
+           // If the checkbox is checked, show the parent td
+           parentTd.style.visibility = "visible";
+         }
+       }
+     });
+     const Transition_metals = [21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48];
+     var Transition_metal = document.getElementById('Transition-metals');
+     Transition_metal.addEventListener('change', function () {
+      for (let i = 0; i < Transition_metals.length; i++) {
+        // Find the parent td by ID and check if the checkbox is unchecked
+        var childTd = document.querySelector('.q [id="' + Transition_metals[i] + '"]');
+        var parentTd = childTd.parentNode;
+        if (parentTd && !Transition_metal.checked) {
+          // Hide the parent td
+          parentTd.style.visibility = "hidden";
+        } else if (parentTd) {
+          // If the checkbox is checked, show the parent td
+          parentTd.style.visibility = "visible";
+        }
+      }
+    });
+
+    const Halogens = [9, 17, 35, 53] ;
+    var Halogen = document.getElementById('Halogens');
+    Halogen.addEventListener('change', function () {
+     for (let i = 0; i < Halogens.length; i++) {
+       // Find the parent td by ID and check if the checkbox is unchecked
+       var childTd = document.querySelector('.q [id="' + Halogens[i] + '"]');
+       var parentTd = childTd.parentNode;
+       if (parentTd && !Halogen.checked) {
+         // Hide the parent td
+         parentTd.style.visibility = "hidden";
+       } else if (parentTd) {
+         // If the checkbox is checked, show the parent td
+         parentTd.style.visibility = "visible";
+       }
+     }
+   });
+
+   const Noble_Gases = [2, 10, 18, 36, 54, 86];
+   var Noble_Gas = document.getElementById('Noble-Gases');
+   Noble_Gas.addEventListener('change', function () {
+    for (let i = 0; i < Noble_Gases.length; i++) {
+      // Find the parent td by ID and check if the checkbox is unchecked
+      var childTd = document.querySelector('.q [id="' + Noble_Gases[i] + '"]');
+      var parentTd = childTd.parentNode;
+      if (parentTd && !Noble_Gas.checked) {
+        // Hide the parent td
+        parentTd.style.visibility = "hidden";
+      } else if (parentTd) {
+        // If the checkbox is checked, show the parent td
+        parentTd.style.visibility = "visible";
+      }
+    }
+  });
+
+
+// const Alkali_Earths = [4, 12, 20, 38, 56, 88];
+//  var earths = document.getElementById('Alkaline-earths');
+//     earths.addEventListener('change',()={filter_bar(Alkali_Earths,earths)});
+
+// function filter_bar(array1,variables){
+//   for (let i = 0; i < array1.length; i++) {
+//     // Find the parent td by ID and check if the checkbox is unchecked
+//     var childTd = document.querySelector('.q [id="' + array1[i] + '"]');
+//     var parentTd = childTd.parentNode;
+//     if (parentTd && !variables.checked) {
+//       // Hide the parent td
+//       parentTd.style.visibility = "hidden";
+//     } else if (parentTd) {
+//       // If the checkbox is checked, show the parent td
+//       parentTd.style.visibility = "visible";
+//     }
+//   }
+// }
+    
+
+
+
+

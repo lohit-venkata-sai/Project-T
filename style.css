@@ -119,9 +119,14 @@ table{
     font-size: 25px;
     text-align: center;
 }
+.details_table{
+    width: 100%;
+    border: 1px black;
+}
 .details-table td{
     text-align: left;
     font-weight: bold;
+    width: 100%;
 }
 .row4{
     padding-left: 5px;
