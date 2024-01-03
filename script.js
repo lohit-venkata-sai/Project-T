@@ -119,19 +119,23 @@ var elements = [
     { symbol: 'Og', name: 'Oganesson', atomicNumber: 118, discoveredBy: 'Joint Institute for Nuclear Research (JINR) in Russia and Lawrence Livermore National Laboratory (LLNL) in the USA', namedBy: 'IUPAC', atomicMass: '(294)', density: 'None' }];
 
 
-for(let i=0; i<118; i++)
-{   
-    // i = String(i);
-    var element_no= document.querySelector('.atomic_no[id = "'+(i+1)+'"]');
-    var element_name= document.querySelector('.name[id ="'+(i+1)+'"]');
-    var element_symbol= document.querySelector('.Symbol[id = "'+(i+1)+'"]');
-    element_no.textContent = elements[i].atomicNumber;
-    element_name.textContent= elements[i].name;
-    element_symbol.textContent= elements[i].symbol;
-    // i = Number(i);
-}
 
-document.addEventListener('DOMContentLoaded',function(){
+
+function arrange(){
+  for(let i=0; i<118; i++)
+  {   
+      var element_no= document.querySelector('.atomic_no[id = "'+(i+1)+'"]');
+      var element_name= document.querySelector('.name[id ="'+(i+1)+'"]');
+      var element_symbol= document.querySelector('.Symbol[id = "'+(i+1)+'"]');
+      element_no.textContent = elements[i].atomicNumber;
+      element_name.textContent= elements[i].name;
+      element_symbol.textContent= elements[i].symbol;
+  }
+};
+
+window.onload = arrange();
+
+function hoverTds(){
   var col_q = document.getElementsByClassName('q');
   // var col_name = document.getElementsByClassName('name');
 
@@ -148,18 +152,11 @@ document.addEventListener('DOMContentLoaded',function(){
         //col_name[i].style.maxWidth = '55px';
     });
   }
-})
+}
+hoverTds();
 
-    
-    function createElementDiv(element) {
-      var div = document.createElement('div');
-      div.className = 'element';
-      div.textContent = `${element.symbol} - ${element.name} (${element.atomicNumber})`;
-      return div;
-    }
-    
-    function showElementDetails(element) {
-      if(element){
+function showElementDetails(element) {
+    if(element){
       document.getElementById('Z').textContent = element.atomicNumber;
       document.getElementById('sym').textContent = element.symbol;
       document.getElementById('Z_name').textContent = element.name;
@@ -170,26 +167,39 @@ document.addEventListener('DOMContentLoaded',function(){
       document.getElementById('Density').textContent = element.density;
       document.getElementById('element-description').textContent = `${element.name} is an element with atomic number ${element.atomicNumber} and symbol ${element.symbol}.`;
       }
-    }
+}
 
-    var container = document.querySelector('.details-container');
-    for (var i = 0; i < elements.length; i++) {
-     // var elementDiv = createElementDiv(elements[i]);
-     var elementDiv=document.getElementsByClassName ("q")[i];
-      //container.appendChild(elementDiv);
-      elementDiv.addEventListener('click', function (event) {
-       // var selectedElement=container.getElementsByClassName ("row2")[0];
-       console.log(elements.find(el => el.symbol === event.target.textContent));
-       var selectedElement = elements.find(el => el.symbol === event.target.textContent);
-        showElementDetails(selectedElement);
-        document.querySelector('.details-container').style.display = 'block';
-      });
-    }
-    document.querySelector('.cross').addEventListener('click', function () {
-      document.querySelector('.details-container').style.display = 'none';
-    });
+
+function onClickEvent() {
+  var container = document.querySelector('.details-container');
+  
+  for (var i = 0; i < elements.length; i++) {
+    var elementDiv = document.getElementsByClassName("q")[i];
     
+    elementDiv.addEventListener('click', function (event) {
+      var selectedElement = null;
+      const items = ['atomicNumber', 'symbol', 'name'];
+      
+      for (let i = 0; i < items.length; i++) {
+        selectedElement = elements.find(el => el[items[i]] === event.target.textContent);
+        
+        if (selectedElement) {
+          break;
+        }
+      }
+      
+      if (selectedElement) {
+        showElementDetails(selectedElement);
+        container.style.display = 'block';
+      } else {
+        console.log("Element not found");
+      }
+    });
+  }
+  
+  document.querySelector('.cross').addEventListener('click', function () {
+    container.style.display = 'none';
+  });
+}
 
-
-
-
+onClickEvent();
