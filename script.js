@@ -1,4 +1,4 @@
-var elements = [
+const elements = [
   { symbol: 'H', name: 'Hydrogen', atomicNumber: 1, discoveredBy: 'Henry Cavendish', namedBy: 'Antoine Lavoisier', atomicMass: '1.008', density: '0.0000899' },
   { symbol: 'He', name: 'Helium', atomicNumber: 2, discoveredBy: 'Pierre Janssen', namedBy: 'Léon Teisserenc de Bort', atomicMass: '4.0026', density: '0.0001786' },
   { symbol: 'Li', name: 'Lithium', atomicNumber: 3, discoveredBy: 'Johan August Arfwedson', namedBy: 'Jöns Jakob Berzelius', atomicMass: '6.94', density: '0.534' },
@@ -154,86 +154,92 @@ function hoverTds(){
   }
 }
 
-function showElementDetails(element) {
-    if(element){
-      document.getElementById('Z').textContent = element.atomicNumber;
-      document.getElementById('sym').textContent = element.symbol;
-      document.getElementById('Z_name').textContent = element.name;
-      document.getElementById('A').textContent = element.atomicMass;
-      document.getElementById('Disc-By').textContent = element.discoveredBy;
-      document.getElementById('Named-By').textContent = element.namedBy;
-      document.getElementById('Atomic-Mass').textContent = element.atomicMass;
-      document.getElementById('Density').textContent = element.density;
-      document.getElementById('element-description').textContent = `${element.name} is an element with atomic number ${element.atomicNumber} and symbol ${element.symbol}.`;
-      }
+function showElementDetails(ele) {
+  // element = element- 1;
+  document.querySelector(".details-container").style.display = 'block';
+  Number(ele);
+
+
+      document.getElementById('Z').textContent = elements[ele].atomicNumber;
+      document.getElementById('sym').textContent = elements[ele].symbol;
+      document.getElementById('Z_name').textContent = elements[ele].name;
+      document.getElementById('A').textContent = elements[ele].atomicMass;
+      document.getElementById('Disc-By').textContent = elements[ele].discoveredBy;
+      document.getElementById('Named-By').textContent = elements[ele].namedBy;
+      document.getElementById('Atomic-Mass').textContent = elements[ele].atomicMass;
+      document.getElementById('Density').textContent = elements[ele].density;
+      document.getElementById('element-description').textContent = `${elements[ele].name} is an element with atomic number ${elements[ele].atomicNumber} and symbol ${elements[ele].symbol}.`;
+
 }
  
-function onClickEvent() {
-  var container = document.querySelector('.details-container');
+// function onClickEvent() {
+//   var container = document.querySelector('.details-container');
+//   var elementDiv = document.getElementsByClassName("q");
+//   for (let i = 0; i < elements.length; i++) {
 
-  for (var i = 0; i < elements.length; i++) {
-    var elementDiv = document.getElementsByClassName("q")[i];
+//     elementDiv[i].addEventListener('click', function (event) {
+//       var selectedElement = null;
+//       const items = ['atomicNumber', 'symbol', 'name'];
 
-    elementDiv.addEventListener('click', function (event) {
-      var selectedElement = null;
-      const items = ['atomicNumber', 'symbol', 'name'];
+//       for (let i = 0; i < items.length; i++) {
+//         selectedElement = elements.find(el => el[items[i]] === event.target.textContent);
+//       }
 
-      for (let i = 0; i < items.length; i++) {
-        selectedElement = elements.find(el => el[items[i]] === event.target.textContent);
-        if (selectedElement) {
-          break; // Exit the loop if an element is found
-        }
+//       if (selectedElement) {
+//         showElementDetails(selectedElement);
+//         container.style.display = 'block';
+//       } else {
+//         console.log("Element not found");
+//       }
+//     });
+//   }
+  
+//   document.querySelector('.cross').addEventListener('click', function () {
+//     container.style.display = 'none';
+//   });
+// }
+// onClickEvent();
+
+for(let i=1; i<=118;i++){
+document.querySelector('[id ="'+i+'"]').addEventListener('click',function(){
+  let index = i-1;
+  showElementDetails(index);
+});
+}
+
+var Td_q = document.getElementsByClassName('q');
+
+for (let i = 0; i < Td_q.length; i++) {
+  Td_q[i].addEventListener('click', () => {
+    var child_nodes = Td_q[i].childNodes;
+    for(let j=0; j<child_nodes.length;j++ ){
+      if(child_nodes[j].nodeType == Node.ELEMENT_NODE){
+        let Id = child_nodes[j].id;
+        showElementDetails(Id - 1);
       }
-
-      if (selectedElement) {
-        showElementDetails(selectedElement);
-        container.style.display = 'block';
-      } else {
-        console.log("Element not found"); // Handle the case where no element is found
-      }
-    });
-  }
-
-  document.querySelector('.cross').addEventListener('click', function () {
-    container.style.display = 'none';
+    }
   });
 }
-onClickEvent();
 
 
+document.querySelector('.cross').addEventListener('click', ()=>{
+  document.querySelector('.details-container').style.display = 'none';
+});
 
-//  document.getElementsByClassName('q')[22].style.visibility = 'hidden';
-
-
-// const Alkali_metals = ['3', '11', '19', '37', '55', '87'];
-// var alkali = document.getElementById('Alkaline-metals');
-
-// alkali.addEventListener('change', function () {
-//   for (let i = 0; i < Alkali_metals.length; i++) {
-//     // Check if the checkbox is unchecked
-//     if (!alkali.checked) {
-//       // Hide the element with id i
-//       document.getElementById(Alkali_metals[i].toString()).style.visibility = "hidden";
-//     } else {
-//       // If the checkbox is checked, show the element with id i
-//       document.getElementById(Alkali_metals[i].toString()).style.visibility = "visible";
-//     }
-//   }
-// });
-
+const postTransitionMetals = [13, 49, 50, 81, 82, 83, 84, 113, 114, 115, 116, 117, 118];
+const lanthanides = [57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71];
+const actinides = [89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103];
 const Alkali_metals = [3, 11, 19, 37, 55, 87];
     var alkali = document.getElementById('Alkaline-metals');
 
     alkali.addEventListener('change', function () {
       for (let i = 0; i < Alkali_metals.length; i++) {
-        // Find the parent td by ID and check if the checkbox is unchecked
+      
         var childTd = document.querySelector('.q [id="' + Alkali_metals[i] + '"]');
         var parentTd = childTd.parentNode;
         if (parentTd && !alkali.checked) {
-          // Hide the parent td
           parentTd.style.visibility = "hidden";
         } else if (parentTd) {
-          // If the checkbox is checked, show the parent td
           parentTd.style.visibility = "visible";
         }
       }
@@ -243,14 +249,11 @@ const Alkali_metals = [3, 11, 19, 37, 55, 87];
 
   earths.addEventListener('change', function () {
       for (let i = 0; i < Alkali_Earths.length; i++) {
-        // Find the parent td by ID and check if the checkbox is unchecked
         var childTd = document.querySelector('.q [id="' + Alkali_Earths[i] + '"]');
         var parentTd = childTd.parentNode;
         if (parentTd && !earths.checked) {
-          // Hide the parent td
           parentTd.style.visibility = "hidden";
         } else if (parentTd) {
-          // If the checkbox is checked, show the parent td
           parentTd.style.visibility = "visible";
         }
       }
@@ -260,14 +263,11 @@ const Alkali_metals = [3, 11, 19, 37, 55, 87];
        var Metalloid = document.getElementById('Metalloids');
        Metalloid.addEventListener('change', function () {
         for (let i = 0; i < Metalloids.length; i++) {
-          // Find the parent td by ID and check if the checkbox is unchecked
           var childTd = document.querySelector('.q [id="' + Metalloids[i] + '"]');
           var parentTd = childTd.parentNode;
           if (parentTd && !Metalloid.checked) {
-            // Hide the parent td
             parentTd.style.visibility = "hidden";
           } else if (parentTd) {
-            // If the checkbox is checked, show the parent td
             parentTd.style.visibility = "visible";
           }
         }
@@ -276,14 +276,13 @@ const Alkali_metals = [3, 11, 19, 37, 55, 87];
       var Non_metal = document.getElementById('Non-metals');
       Non_metal.addEventListener('change', function () {
        for (let i = 0; i < Non_metals.length; i++) {
-         // Find the parent td by ID and check if the checkbox is unchecked
          var childTd = document.querySelector('.q [id="' + Non_metals[i] + '"]');
          var parentTd = childTd.parentNode;
          if (parentTd && !Non_metal.checked) {
-           // Hide the parent td
+           
            parentTd.style.visibility = "hidden";
          } else if (parentTd) {
-           // If the checkbox is checked, show the parent td
+           
            parentTd.style.visibility = "visible";
          }
        }
@@ -292,14 +291,14 @@ const Alkali_metals = [3, 11, 19, 37, 55, 87];
      var Transition_metal = document.getElementById('Transition-metals');
      Transition_metal.addEventListener('change', function () {
       for (let i = 0; i < Transition_metals.length; i++) {
-        // Find the parent td by ID and check if the checkbox is unchecked
+        
         var childTd = document.querySelector('.q [id="' + Transition_metals[i] + '"]');
         var parentTd = childTd.parentNode;
         if (parentTd && !Transition_metal.checked) {
-          // Hide the parent td
+          
           parentTd.style.visibility = "hidden";
         } else if (parentTd) {
-          // If the checkbox is checked, show the parent td
+          
           parentTd.style.visibility = "visible";
         }
       }
@@ -309,14 +308,14 @@ const Alkali_metals = [3, 11, 19, 37, 55, 87];
     var Halogen = document.getElementById('Halogens');
     Halogen.addEventListener('change', function () {
      for (let i = 0; i < Halogens.length; i++) {
-       // Find the parent td by ID and check if the checkbox is unchecked
+       
        var childTd = document.querySelector('.q [id="' + Halogens[i] + '"]');
        var parentTd = childTd.parentNode;
        if (parentTd && !Halogen.checked) {
-         // Hide the parent td
+         
          parentTd.style.visibility = "hidden";
        } else if (parentTd) {
-         // If the checkbox is checked, show the parent td
+         
          parentTd.style.visibility = "visible";
        }
      }
@@ -326,40 +325,65 @@ const Alkali_metals = [3, 11, 19, 37, 55, 87];
    var Noble_Gas = document.getElementById('Noble-Gases');
    Noble_Gas.addEventListener('change', function () {
     for (let i = 0; i < Noble_Gases.length; i++) {
-      // Find the parent td by ID and check if the checkbox is unchecked
+      
       var childTd = document.querySelector('.q [id="' + Noble_Gases[i] + '"]');
       var parentTd = childTd.parentNode;
       if (parentTd && !Noble_Gas.checked) {
-        // Hide the parent td
+        
         parentTd.style.visibility = "hidden";
       } else if (parentTd) {
-        // If the checkbox is checked, show the parent td
+        
+        parentTd.style.visibility = "visible";
+      }
+    }
+  });
+    
+  var postTransitionMetal = document.getElementById('postTransitionMetals');
+  postTransitionMetal.addEventListener('change', function () {
+    for (let i = 0; i < postTransitionMetals.length; i++) {
+      
+      var childTd = document.querySelector('.q [id="' + postTransitionMetals[i] + '"]');
+      var parentTd = childTd.parentNode;
+      if (parentTd && !postTransitionMetal.checked) {
+        
+        parentTd.style.visibility = "hidden";
+      } else if (parentTd) {
+        
         parentTd.style.visibility = "visible";
       }
     }
   });
 
+  var lanthanide = document.getElementById('lanthanides');
+  lanthanide.addEventListener('change', function () {
+    for (let i = 0; i < lanthanides.length; i++) {
+      
+      var childTd = document.querySelector('.q [id="' + lanthanides[i] + '"]');
+      var parentTd = childTd.parentNode;
+      if (parentTd && !lanthanide.checked) {
+        
+        parentTd.style.visibility = "hidden";
+      } else if (parentTd) {
+        
+        parentTd.style.visibility = "visible";
+      }
+    }
+  });
 
-// const Alkali_Earths = [4, 12, 20, 38, 56, 88];
-//  var earths = document.getElementById('Alkaline-earths');
-//     earths.addEventListener('change',()={filter_bar(Alkali_Earths,earths)});
+  var actinide = document.getElementById('actinides');
+  actinide.addEventListener('change', function () {
+    for (let i = 0; i < actinides.length; i++) {
+      
+      var childTd = document.querySelector('.q [id="' + actinides[i] + '"]');
+      var parentTd = childTd.parentNode;
+      if (parentTd && !actinide.checked) {
+        
+        parentTd.style.visibility = "hidden";
+      } else if (parentTd) {
+        
+        parentTd.style.visibility = "visible";
+      }
+    }
+  });
 
-// function filter_bar(array1,variables){
-//   for (let i = 0; i < array1.length; i++) {
-//     // Find the parent td by ID and check if the checkbox is unchecked
-//     var childTd = document.querySelector('.q [id="' + array1[i] + '"]');
-//     var parentTd = childTd.parentNode;
-//     if (parentTd && !variables.checked) {
-//       // Hide the parent td
-//       parentTd.style.visibility = "hidden";
-//     } else if (parentTd) {
-//       // If the checkbox is checked, show the parent td
-//       parentTd.style.visibility = "visible";
-//     }
-//   }
-// }
-    
-
-
-
-
+  
