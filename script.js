@@ -130,13 +130,14 @@ function arrange(){
       element_name.textContent= elements[i].name;
       element_symbol.textContent= elements[i].symbol;
   }
-  hoverTds();
+    hoverTds();
 };
 
 window.onload = arrange();
 
 function hoverTds(){
   var col_q = document.getElementsByClassName('q');
+
   // var col_name = document.getElementsByClassName('name');
 
   for (let i = 0; i < col_q.length; i++) {
@@ -385,5 +386,37 @@ const Alkali_metals = [3, 11, 19, 37, 55, 87];
       }
     }
   });
+  let isDragging = false;
+let offsetX, offsetY;
+const detailsContainer = document.querySelector('.details-container');
 
-  
+detailsContainer.addEventListener('mousedown', startDrag);
+detailsContainer.addEventListener('touchstart', startDrag);
+
+function startDrag(e) {
+    isDragging = true;
+    const { clientX, clientY } = e.touches ? e.touches[0] : e;
+    offsetX = clientX - detailsContainer.getBoundingClientRect().left;
+    offsetY = clientY - detailsContainer.getBoundingClientRect().top;
+
+    const moveHandler = (e) => {
+        if (isDragging) {
+            const { clientX, clientY } = e.touches ? e.touches[0] : e;
+            detailsContainer.style.left = `${clientX - offsetX}px`;
+            detailsContainer.style.top = `${clientY - offsetY}px`;
+         }
+    };
+
+     const endDrag = () => {
+        isDragging = false;
+        document.removeEventListener('mousemove', moveHandler);
+        document.removeEventListener('touchmove', moveHandler);
+        document.removeEventListener('mouseup', endDrag);
+        document.removeEventListener('touchend', endDrag);
+    };
+
+    document.addEventListener('mousemove', moveHandler);
+    document.addEventListener('touchmove', moveHandler);
+    document.addEventListener('mouseup', endDrag);
+    document.addEventListener('touchend', endDrag);
+}

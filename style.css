@@ -50,15 +50,31 @@ table{
 .checkbox{
     width: 15px; 
     height: 15px;
+    border: 2px solid white;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
     cursor: pointer;
+}
+.checkbox:checked {
+    background-color: #4CAF50; 
+    border: 2px solid #4CAF50; 
+
+}
+
+/* checkmark style */
+.checkbox:checked::before {
+    content: "\2713"; 
+    font-weight: bold;
+    text-align: center;
+    line-height: 15px; 
+    color: white; 
 }
 .name{
     text-align: center;
-    font-size: 10px;
-    overflow: hidden;
-    /* text-wrap: nowrap; */
+    font-size: 11px;
+     overflow: hidden;
     text-overflow: ellipsis;
-    /* word-wrap: break-word; */
     max-width: 50px;
     /* transition: max-width 1.5s ease-in-out; */
     animation: scrollText 10s linear infinite;
@@ -76,8 +92,8 @@ table{
     right: 500px;
     top: 30px;
     border-radius: 9px;
-    background-color: #363062;
-    border: 4px solid #0C134F;
+    background-color: #9e33c9;
+    border: 4px solid #e8dbe9;
     padding-left: 6px;
     display: none; 
 }
@@ -87,8 +103,8 @@ table{
 }
 .cross{
     margin: 3px 310px;
-    background-color: transparent;
-    border: 1px solid white;
+    background-color: white;
+    border: 1px solid black;
     font-size: 15px;
     cursor: pointer;
 }
@@ -98,11 +114,11 @@ table{
 }
 .inner-row2{
     height: 150px;
-    width: 150px;
+    width: 170px;
     margin: 20px 110px;
     border: 1px solid white;
     color: whitesmoke;
-    background-color: #194000;
+    background-color: #49a113;
     text-align: center;
     border-radius: 5px;
     box-shadow: 5px 5px black;
